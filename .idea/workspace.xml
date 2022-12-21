@@ -4,14 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95b84f88-0052-4a81-ae19-e8edfb279e3c" name="Changes" comment="" />
+    <list default="true" id="95b84f88-0052-4a81-ae19-e8edfb279e3c" name="Changes" comment=" master">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/ConfigCourier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/Courier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/EndPoints.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/GenerateLoginCourier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/JSON.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/LoginCourier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/OrderClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/Praktikum/Orders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CreateCourierTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/GetOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/OrderParametrizedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2JEagiiy67QweXbmUsxgRZH53ZK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -22,9 +52,59 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.LoginTest.emptyLogin">
+    <configuration name="GetOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="GetOrder" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LoginTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.emptyLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LoginTest" />
+      <option name="METHOD_NAME" value="emptyLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderParametrizedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OrderParametrizedTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LoginTest.emptyLogin" />
+        <item itemvalue="JUnit.LoginTest" />
+        <item itemvalue="JUnit.GetOrder" />
+        <item itemvalue="JUnit.OrderParametrizedTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -34,6 +114,14 @@
       <option name="presentableId" value="Default" />
       <updated>1671645808484</updated>
     </task>
+    <task id="LOCAL-00001" summary=" master">
+      <created>1671645940316</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671645940316</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -46,5 +134,25 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=" master" />
+    <option name="LAST_COMMIT_MESSAGE" value=" master" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/OrderParametrizedTest.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/GetOrder.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

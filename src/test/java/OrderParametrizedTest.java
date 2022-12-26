@@ -1,4 +1,3 @@
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +34,6 @@ public class OrderParametrizedTest {
     public void setUp() {
         orderclient = new OrderClient();
         orders = new Orders();
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
         orderclient.setColor(color);
     }
 

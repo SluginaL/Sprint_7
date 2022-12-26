@@ -1,26 +1,31 @@
+import com.github.javafaker.Faker;
 import io.qameta.allure.Description;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.Praktikum.*;
+import ru.Praktikum.ConfigCourier;
+import ru.Praktikum.Courier;
+import ru.Praktikum.JSON;
+import ru.Praktikum.LoginCourier;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 
 
 public class CreateCourierTest {
     private Courier courier;
+    private LoginCourier loginCourier;
     private ConfigCourier configCourier;
+    private Faker faker;
     private String Message = "Недостаточно данных для создания учетной записи";
     private String isUsedLogin = "Этот логин уже используется. Попробуйте другой.";
 
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
         courier = new Courier();
         configCourier = new ConfigCourier();
+        faker = new Faker();
         Response response = courier.createPostRequestForCreateNewCourier(configCourier);
     }
 
@@ -28,7 +33,8 @@ public class CreateCourierTest {
     @Description("курьера можно создать/запрос возвращает правильный код ответа;\n" +
             "успешный запрос возвращает ok: true")
     public void checkCreateNewCourier() {
-        configCourier.setLogin(GenerateLoginCourier.generateString());
+        String uniqname = faker.name().username();
+        configCourier.setLogin(uniqname);
         Response response = courier.createPostRequestForCreateNewCourier(configCourier);
         response.then().assertThat().
                 statusCode(201). // проверь статус ответа
@@ -47,9 +53,8 @@ public class CreateCourierTest {
     @Test
     @Description("если одного из полей нет, запрос возвращает ошибку")
     public void checkCreateNewCourierWithoutOneField() {
-        configCourier.setLogin(null);
+        configCourier.setPassword(null);
         Response response = courier.createPostRequestForCreateNewCourier(configCourier);
-
         response.then().assertThat().
                 statusCode(400). // проверь статус ответа
                 and().body("message", equalTo(Message));
@@ -67,7 +72,7 @@ public class CreateCourierTest {
     @Test
     @Description("нельзя создать двух одинаковых курьеров")
     public void checkCreateNewCourierTwice() {
-        String repeatLogin = configCourier.getLogin();
+        courier.createPostRequestForCreateNewCourier(configCourier);
         Response response = courier.createPostRequestForCreateNewCourier(configCourier);
         response.then().assertThat().
                 statusCode(409). // проверь статус ответа
@@ -77,13 +82,12 @@ public class CreateCourierTest {
 
     @After
     @Description("Удаление тестовых данных")
-    public void Clean() {
-        LoginCourier loginCourier = new LoginCourier();
+    public void cleanTestData() {
+        loginCourier = new LoginCourier();
+        loginCourier.setLogin(configCourier.getLogin());
+        loginCourier.setPassword(configCourier.getPassword());
         Response request = courier.returnIdCourier(loginCourier);
         JSON jsonanswer = request.body().as(JSON.class);
         Response delete = courier.deleteCourier(jsonanswer.getId());
-
     }
-
-
 }

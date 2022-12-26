@@ -1,9 +1,13 @@
 package ru.Praktikum;
 
+import com.github.javafaker.Faker;
+
 public class LoginCourier {
 
-    private String login = "ninja123456789";
-    private String password = "1234";
+    Faker faker = new Faker();
+
+    private String login = faker.name().username();
+    private String password = faker.name().nameWithMiddle();
 
 
     public String getLogin() {

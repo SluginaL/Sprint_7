@@ -1,13 +1,15 @@
 package ru.Praktikum;
 
-public class ConfigCourier {
+import com.github.javafaker.Faker;
 
-    private String login = "ninja123456789";
-    private String password = "1234";
-    private String firstName = "Ya";
+public class ConfigCourier {
+    Faker faker = new Faker();
+
+    private String login = faker.name().fullName();
+    private String password = faker.name().name();
+    private String firstName = faker.name().firstName();
 
     public String getLogin() {
-
         return login;
     }
 

@@ -1,5 +1,4 @@
 import io.qameta.allure.Description;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,16 +18,18 @@ public class GetOrder {
     public void setUp() {
         orders = new Orders();
         orderclient = new OrderClient();
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
+
 
     }
 
     @Test
-    @Description("Получение списка заказов")
-    public void getOrder() {
-        Response response = orders.getCreateNewOrder();
+    @Description("Получение в тело ответа списка заказов")
+    public void getListOrders() {
+        Response response = orders.getCreatedOrders();
         response.then().assertThat().
                 statusCode(200). // проверь статус ответа
                 and().body("orders", notNullValue());
     }
+
+
 }

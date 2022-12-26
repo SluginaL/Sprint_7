@@ -1,10 +1,13 @@
+import com.github.javafaker.Faker;
 import io.qameta.allure.Description;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.Praktikum.*;
+import ru.Praktikum.ConfigCourier;
+import ru.Praktikum.Courier;
+import ru.Praktikum.JSON;
+import ru.Praktikum.LoginCourier;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -12,6 +15,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class LoginTest {
     private Courier courier;
+    private Faker faker;
     private ConfigCourier configCourier;
     private LoginCourier logincourier;
     private String Message = "Недостаточно данных для входа";
@@ -20,10 +24,9 @@ public class LoginTest {
     @Before
     public void setUp() {
         courier = new Courier();
-        logincourier = new LoginCourier();
         configCourier = new ConfigCourier();
-        configCourier.setLogin(GenerateLoginCourier.generateString());
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
+        faker = new Faker();
+        logincourier = new LoginCourier();
         Response response = courier.createPostRequestForCreateNewCourier(configCourier);
     }
 
@@ -31,6 +34,7 @@ public class LoginTest {
     @Description("курьер может авторизоваться")
     public void getAuthorization() {
         logincourier.setLogin(configCourier.getLogin());
+        logincourier.setPassword(configCourier.getPassword());
         Response response = courier.returnIdCourier(logincourier);
         response.then().assertThat().
                 statusCode(200). // проверь статус ответа
@@ -40,7 +44,7 @@ public class LoginTest {
     @Test
     @Description("для авторизации нужно передать все обязательные поля;")
     public void requiredFieldInAuthorization() {
-        Response response = courier.PostRequestLoginWithoutKeys();
+        Response response = courier.postRequestLoginWithoutKeys();
         response.then().assertThat().
                 statusCode(400). // проверь статус ответа
                 and().body("message", equalTo(Message));
@@ -49,7 +53,8 @@ public class LoginTest {
     @Test
     @Description("если авторизоваться под несуществующим пользователем, запрос возвращает ошибку;")
     public void tryAuthorizationNotExistUser() {
-        logincourier.setLogin(GenerateLoginCourier.generateString());
+        String notExistName = faker.name().nameWithMiddle();
+        logincourier.setLogin(notExistName);
         Response response = courier.returnIdCourier(logincourier);
         response.then().assertThat().
                 statusCode(404). // проверь статус ответа
@@ -61,7 +66,8 @@ public class LoginTest {
     @Test
     @Description("система вернёт ошибку, если неправильно указать логин или пароль")
     public void wrongLoginOrPassword() {
-        logincourier.setLogin(GenerateLoginCourier.generateString());
+        String wrongName = faker.name().lastName();
+        logincourier.setLogin(wrongName);
         Response response = courier.returnIdCourier(logincourier);
         response.then().assertThat().
                 statusCode(404). // проверь статус ответа
@@ -82,8 +88,10 @@ public class LoginTest {
 
     @After
     @Description("Удаление тестовых данных")
-    public void Clean() {
+    public void cleanTestData() {
+        logincourier = new LoginCourier();
         logincourier.setLogin(configCourier.getLogin());
+        logincourier.setPassword(configCourier.getPassword());
         Response response = courier.returnIdCourier(logincourier);
         JSON jsonanswer = response.body().as(JSON.class);
         Response delete = courier.deleteCourier(jsonanswer.getId());

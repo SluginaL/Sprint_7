@@ -1,6 +1,5 @@
 package ru.Praktikum;
 
-
 public class OrderClient {
     private String firstName;
     private String lastName;

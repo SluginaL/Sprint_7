@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: CreateCourierTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 67.647 s <<< FAILURE! - in CreateCourierTest
+checkCreateNewCourierWithoutOneField(CreateCourierTest)  Time elapsed: 60.434 s  <<< ERROR!
+java.lang.IllegalStateException: 
+Cannot parse content to class ru.Praktikum.JSON because no content-type was present in the response and no default parser has been set.
+You can specify a default parser using e.g.:
+RestAssured.defaultParser = Parser.JSON;
+
+or you can specify an explicit ObjectMapper using as(class ru.Praktikum.JSON, <ObjectMapper>);
+	at CreateCourierTest.cleanTestData(CreateCourierTest.java:91)
+
